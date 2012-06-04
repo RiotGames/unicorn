@@ -26,6 +26,8 @@ define :unicorn_config, :listen => nil, :working_directory => nil, :worker_timeo
     action :create
   end
 
+  params[:listen] = {params[:listen] => {}} if params[:listen].kind_of? String or params[:listen].kind_of? Integer
+
   tvars = params.clone
   params[:listen].each do |port, options|
     oarray = Array.new
